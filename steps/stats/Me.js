@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {View, StyleSheet} from 'react-native';
-import {ListItem, Text, Container} from 'native-base';
+import {List, ListItem, Text, Container} from 'native-base';
 
 import {units} from './data/units';
 import moment from 'moment';
@@ -20,12 +20,14 @@ const Me = ({date}: Props) => {
   }));
 
   return (
-    <Container style={styles.list}>
-      {diffs.map((diff, idx) => (
-        <ListItem key={idx}>
-          <Text>{`${diff.value} ${diff.unit.name.toLowerCase()}`}</Text>
-        </ListItem>
-      ))}
+    <Container>
+      <List>
+        {diffs.map((diff, idx) => (
+          <ListItem key={idx}>
+            <Text>{`${diff.value} ${diff.unit.name.toLowerCase()}`}</Text>
+          </ListItem>
+        ))}
+      </List>
     </Container>
   );
 };
@@ -33,9 +35,6 @@ const Me = ({date}: Props) => {
 export default Me;
 
 const styles = StyleSheet.create({
-  list: {
-    padding: 20,
-  },
   listTitle: {
     fontSize: 20,
     fontWeight: 'bold',

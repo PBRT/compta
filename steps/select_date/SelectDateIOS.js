@@ -10,7 +10,7 @@ type Props = {
   onNext: () => void,
   onChangeDate: (date: Date) => void,
 };
-const SelectDateStep = ({initDate, date, onChangeDate, onNext}: Props) => {
+const SelectDateIOS = ({initDate, date, onChangeDate, onNext}: Props) => {
   const [localDate, setLocalDate] = useState(date);
   const onPress = () => {
     onChangeDate(localDate);
@@ -56,7 +56,7 @@ const SelectDateStep = ({initDate, date, onChangeDate, onNext}: Props) => {
   );
 };
 
-export default SelectDateStep;
+export default SelectDateIOS;
 
 const styles = StyleSheet.create({
   title: {

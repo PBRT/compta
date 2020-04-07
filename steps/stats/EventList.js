@@ -1,6 +1,14 @@
 import React, {useState} from 'react';
 import {View, StyleSheet, ScrollView, Alert} from 'react-native';
-import {Container, ListItem, Button, Text, Left, Right} from 'native-base';
+import {
+  Container,
+  List,
+  ListItem,
+  Button,
+  Text,
+  Left,
+  Right,
+} from 'native-base';
 
 import {units} from './data/units';
 import moment from 'moment';
@@ -27,20 +35,22 @@ const EventList = ({events, dob, isPast = false}: Props) => {
 
   return (
     <ScrollView style={styles.list}>
-      {events.slice(0, offset).map((event, idx) => (
-        <ListItem
-          key={idx}
-          onPress={() =>
-            Alert.alert(`Your ${event.name}`, getAlertContent(event, isPast))
-          }>
-          <Left>
-            <Text>{event.name}</Text>
-          </Left>
-          <Right style={{minWidth: 100}}>
-            <Text>{moment(event.date).format('DD-MM-YYYY')}</Text>
-          </Right>
-        </ListItem>
-      ))}
+      <List>
+        {events.slice(0, offset).map((event, idx) => (
+          <ListItem
+            key={idx}
+            onPress={() =>
+              Alert.alert(`Your ${event.name}`, getAlertContent(event, isPast))
+            }>
+            <Left>
+              <Text>{event.name}</Text>
+            </Left>
+            <Right style={{minWidth: 100}}>
+              <Text>{moment(event.date).format('DD-MM-YYYY')}</Text>
+            </Right>
+          </ListItem>
+        ))}
+      </List>
       {offset < events.length && (
         <View style={{alignItems: 'center'}}>
           <View style={styles.buttonContainer}>

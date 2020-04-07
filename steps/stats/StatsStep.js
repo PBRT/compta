@@ -43,7 +43,6 @@ const StatsStep = ({dob, activeSegment}: Props) => {
   const [hasEventOverlayBeenVisible, setHasEventOverlayBeenVisible] = useState(
     false,
   );
-  console.log(upcomingEvents[0].date - currentDate < GAP);
   if (
     upcomingEvents.length > 0 &&
     Math.abs(upcomingEvents[0].date - currentDate) < GAP &&

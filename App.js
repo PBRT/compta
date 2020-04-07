@@ -17,7 +17,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 // Local Components
 import NavBar from './steps/navbar/Navbar';
 import StatsStep from './steps/stats/StatsStep';
-import SelectDateStep from './steps/select_date/SelectDateStep';
+import SelectDate from './steps/select_date/SelectDate';
 
 const DEFAULT_DATE = new Date(689385600000);
 
@@ -33,7 +33,7 @@ function App() {
 
   // Local storage
   async function storeDOB(dob) {
-    await AsyncStorage.setItem('@compta_dob', dob.toDateString());
+    await AsyncStorage.setItem('@compta_dob', dob.toString());
   }
   async function retrieveDOB() {
     const value = await AsyncStorage.getItem('@compta_dob');
@@ -68,9 +68,9 @@ function App() {
           hasSegment={step !== 0}
         />
       </Container>
-      <Container>
+      <Container style={{marginTop: -60}}>
         {step === 0 && (
-          <SelectDateStep
+          <SelectDate
             onNext={nextStep}
             onChangeDate={onChangeDate}
             initDate={initDate}
@@ -81,7 +81,7 @@ function App() {
         {step !== 0 && (
           <View style={styles.footerContainer}>
             <Button full onPress={reset} style={{height: 60}}>
-              <Text style={{color: '#fff', fontSize: 18}}>Reset Date</Text>
+              <Text style={{color: '#fff', fontSize: 18}}>Change Date</Text>
             </Button>
           </View>
         )}
